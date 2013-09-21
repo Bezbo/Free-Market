@@ -27,11 +27,11 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    if @item.update_attributes(params[:item])
-      redirect_to @item, notice: 'Item was successfully updated.'
-    else
-      render action: "edit" 
-    end
+      if @item.update_attributes(params[:item])
+        redirect_to @item, notice: 'Item was successfully updated.'
+      else
+        render action: "edit" 
+      end
   end
 
   def destroy
