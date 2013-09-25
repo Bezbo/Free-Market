@@ -24,4 +24,8 @@
 
 <br />
 
+<%= link_to 'back to item list', items_path if params[:tag] %>
+
+<br />
+
 <%= link_to (button_tag "add item"), new_item_path %>
