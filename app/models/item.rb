@@ -1,6 +1,6 @@
 class Item < ActiveRecord::Base
   attr_accessible :discription, :name, :tag_list
-  has_many :taggings
+  has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
 
   def self.tagged_with(name)
