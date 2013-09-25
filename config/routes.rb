@@ -1,5 +1,6 @@
 Fm::Application.routes.draw do
   get "items/index"
+  get 'tags/:tag', to: 'items#index', as: :tag
 
   resources :items
 

@@ -10,5 +10,9 @@
   <%= @item.discription %>
 </p>
 
+<p>
+Tags: <%= raw @item.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %>
+</p>
+
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>
