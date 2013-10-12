@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Fm</title>
+  <title>Free Market</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
 
+<style>
+
+  body {font-family: ubuntu, "Comic Sans MS",sans-serif;}
+
+  #div_line{
+  border-top 1px double black
+}
+</style>
+
+
+
+<body>
+  
 <%= yield %>
 
 </body>
