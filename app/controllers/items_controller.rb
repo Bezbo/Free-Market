@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
 
+before_filter :authorize, except: [:index, :show]
+
   def index
     if params[:tag]
       @items = Item.tagged_with(params[:tag])
