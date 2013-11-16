@@ -37,15 +37,14 @@
     <tr>
       <td><%= link_to item.name, item %></td>
       <td>
-        <%= debug can? :update, @item %>
-        <% if can? :update, @item %>
+        <% if can? :update, item %>
           <%= link_to 'edit', edit_item_path(item) %>
         <% end %>
       </td>
       <td>
-             
+        <% if can? :destroy, item %>     
           <%= link_to 'delete', item, method: :delete, data: { confirm: 'are you sure?' } %>
-        
+        <% end %>
       </td>
     <% end %>
     </tr>
