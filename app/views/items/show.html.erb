@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<%= debug @item %>
+
 <p>
   <b>Name:</b>
   <%= @item.name %>
@@ -8,6 +10,11 @@
 <p>
   <b>Discription:</b>
   <%= @item.discription %>
+</p>
+
+<p>
+  <b>added by:</b>
+  <%= @item.user.email %>
 </p>
 
 <p>

@@ -1,7 +1,9 @@
 class Item < ActiveRecord::Base
-  attr_accessible :discription, :name, :tag_list
-  has_many :taggings, dependent: :destroy
-  has_many :tags, through: :taggings
+  attr_accessible :discription, :name, :user_id, :tag_list
+
+  belongs_to :user
+  has_many   :taggings, dependent: :destroy
+  has_many   :tags, through: :taggings
 
   def self.tagged_with(name)
     Tag.find_by_name!(name).items
