@@ -1,6 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <% if @item.draft? %>
+    <b>draft</b>
+  <% end %>
+</p>
+
+<p>
   <b>Name:</b>
   <%= @item.name %>
 </p>

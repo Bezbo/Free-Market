@@ -35,7 +35,11 @@
 
     <% @items.each do |item| %>
     <tr>
-      <td><%= link_to item.name, item %></td>
+      <% if can? :update, item %>
+        <td><%= link_to item.name, item %></td>  
+      <% else %>
+        <td><%= link_to item.name, item unless item.draft? %></td>
+      <% end %>  
       <td>
         <% if can? :update, item %>
           <%= link_to 'edit', edit_item_path(item) %>

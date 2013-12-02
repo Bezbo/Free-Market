@@ -6,10 +6,14 @@ class Ability
    #if user.admin?
    #  can :manage, :all
    #else
-     can :read, :all
+     can :read, Item  do |item|
+       item.draft == false
+     end 
+
      can :create, Item
+
      can :manage, Item do |item|
-      item.user_id == user.id
+       item.user_id == user.id
      end
   end
 
