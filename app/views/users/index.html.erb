@@ -1,0 +1,32 @@
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
+
+<h1>Users</h1>
+
+<div>
+  <table id="background">
+    <tr>
+      <th>Email</th>
+      <th></th>
+      <th></th>
+    </tr>
+
+    <% @users.each do |user| %>
+    <tr>
+      <td><%= link_to user.email, user %></td>
+      <td>
+        <% if can? :update, user %>
+          <%= link_to 'edit', edit_user_path(user) %>
+        <% end %>
+      </td>
+      <td>
+        <% if can? :destroy, user %>     
+          <%= link_to 'delete', user, method: :delete, data: { confirm: 'are you sure?' } %>
+        <% end %>
+      </td>      
+
+    <% end %>
+    </tr>
+  </table>
+</div>

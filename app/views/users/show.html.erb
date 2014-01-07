@@ -1,0 +1,55 @@
+<p><%= notice %></p>
+
+<h1>User info</h1>
+
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+<p>
+  <b>Joined:</b>
+  <%= @user.created_at %>
+</p>
+
+<p>
+  <% if @user.role == "admin" || @user.role == "moderator" %>
+    <b>Status:</b>
+    <%= @user.role %>
+  <% end %>
+</p>
+
+<p>
+  <div>
+  <table id="background">
+    <tr>
+      <th>Items added:</th>
+      <th></th>
+      <th></th>
+    </tr>
+
+
+    <% @user.items.each do |item| %>
+    <tr>
+      <% if can? :update, item %>
+        <td><%= link_to item.name, item %></td>  
+      <% else %>
+        <td><%= link_to item.name, item unless item.draft? %></td>
+      <% end %>  
+      <td>
+        <% if can? :update, item %>
+          <%= link_to 'edit', edit_item_path(item) %>
+        <% end %>
+      </td>
+      <td>
+        <% if can? :destroy, item %>     
+          <%= link_to 'delete', item, method: :delete, data: { confirm: 'are you sure?' } %>
+        <% end %>
+      </td>
+    <% end %>
+    </tr>
+  </table>
+</div>
+</p>
+
+<%= link_to 'user list', users_path %>

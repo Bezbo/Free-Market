@@ -1,0 +1,13 @@
+<h1>Editing user</h1>
+<%= form_for(@user) do |f| %>
+  <%= f.label :role, "user status" %></br>
+  <%= f.collection_select :role, User::ROLES, :to_s, :humanize %></br>
+
+  <p>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  </p>
+<% end %>
+
+<%= link_to 'user list', users_path %>

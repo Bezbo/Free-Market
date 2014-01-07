@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Item info</h1>
+
 <p>
   <% if @item.draft? %>
     <b>draft</b>
@@ -18,7 +20,7 @@
 
 <p>
   <b>added by:</b>
-  <%= @item.user.email %>
+  <%= link_to @item.user.email, user_path %>
 </p>
 
 <p>
@@ -28,4 +30,4 @@ Tags: <%= raw @item.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', 
 <% if can? :update, @item %>
   <%= link_to 'Edit', edit_item_path(@item) %> |
 <% end %>
-<%= link_to 'Back', items_path %>
+<%= link_to 'item list', items_path %>

@@ -3,18 +3,24 @@ class Ability
 
   def initialize(user)
    user ||= User.new # guest user (not logged in)
-   #if user.admin?
-   #  can :manage, :all
-   #else
-     can :read, Item  do |item|
-       item.draft == false
+     if user.role == "admin"
+       can :manage, :all
+     else
+       can :read, Item do |item|
+         item.draft == false
+       end
      end 
 
      can :create, Item
 
      can :manage, Item do |item|
-       item.user_id == user.id
+       item.user_id == user.id || user.role == "moderator"
      end
+
+     can :read, User
+
+     can :create, User
+
   end
 
     #

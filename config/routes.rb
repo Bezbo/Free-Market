@@ -1,8 +1,10 @@
 Fm::Application.routes.draw do
   get "items/index"
+  get "users/index"
   get 'tags/:tag', to: 'items#index', as: :tag
 
   resources :items
+  resources :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
