@@ -3,15 +3,6 @@ class UsersController < Clearance::UsersController
   before_filter :authorize, only: [:edit, :update, :destroy]
   load_and_authorize_resource
 
-
-  def change_user_role
-    if user.role == "admin" || "moderator" || "user"
-      @user.save_role
-    else
-      raise "Can't do that."
-    end
-  end
-
   def index
     @users = User.all
   end
@@ -24,7 +15,7 @@ class UsersController < Clearance::UsersController
 
 
   def update
-    if @user.update_attributes(params[:item])
+    if @user.update_attributes(user_attributes)
       redirect_to @user, notice: 'User data was successfully updated.'
     else
       render action: "edit" 
@@ -35,6 +26,16 @@ class UsersController < Clearance::UsersController
     @user.destroy
 
     redirect_to users_url
+  end
+
+  private
+
+  def user_attributes
+    if current_user.role != "admin"
+      params.require(:user).except(:role)
+    else
+      params.require(:user).permit(:role)
+    end
   end
 
 end

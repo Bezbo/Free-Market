@@ -23,6 +23,7 @@ gem "therubyracer", :require => 'v8'
 gem 'jquery-rails'
 gem 'clearance'
 gem "cancan"
+gem 'strong_parameters'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

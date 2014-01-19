@@ -1,6 +1,5 @@
 class Item < ActiveRecord::Base
-  attr_accessible :discription, :name, :user_id, :tag_list, :draft
-
+  
   belongs_to :user
   has_many   :taggings, dependent: :destroy
   has_many   :tags, through: :taggings
